@@ -10,6 +10,7 @@ import {
   Card,
   Button,
   StatusPill,
+  type StatusPillStatus,
   CategoryChip,
   EmptyState,
   SegmentedControl,
@@ -80,7 +81,7 @@ export const MyActivitiesPage: React.FC = () => {
       <div style={{ marginBottom: '1.5rem' }}>
         <SegmentedControl
           value={tab}
-          onChange={(v) => setTab(v as any)}
+          onChange={(v) => setTab(v as 'confirmed' | 'waitlisted' | 'past')}
           options={[
             { label: 'Upcoming (Confirmed)', value: 'confirmed' },
             { label: 'Waitlisted', value: 'waitlisted' },
@@ -111,7 +112,7 @@ export const MyActivitiesPage: React.FC = () => {
                   <div style={{ flex: '1', minWidth: '260px' }}>
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
                       {act && <CategoryChip slug={act.categorySlug} label={act.categoryLabel} emoji={act.categoryEmoji} />}
-                      <StatusPill status={reg.status as any} />
+                      <StatusPill status={reg.status as StatusPillStatus} />
                       {reg.waitlistPosition && (
                         <span style={{ fontSize: '12px', background: '#fef3c7', color: '#92400e', padding: '2px 8px', borderRadius: '12px', fontWeight: 600 }}>
                           Position #{reg.waitlistPosition}

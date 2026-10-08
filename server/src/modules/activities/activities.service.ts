@@ -188,7 +188,7 @@ export const SEED_ACTIVITIES: Activity[] = [
   },
 ];
 
-let activitiesList: Activity[] = [...SEED_ACTIVITIES];
+const activitiesList: Activity[] = [...SEED_ACTIVITIES];
 
 export const activitiesService = {
   list: (params: {

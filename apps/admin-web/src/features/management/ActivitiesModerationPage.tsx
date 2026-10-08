@@ -62,7 +62,7 @@ export const ActivitiesModerationPage: React.FC = () => {
                 </td>
                 <td style={{ padding: '0.75rem 1rem' }}>{a.attendees}</td>
                 <td style={{ padding: '0.75rem 1rem' }}>
-                  <StatusPill status={a.status as any} />
+                  <StatusPill status={a.status} />
                 </td>
                 <td style={{ padding: '0.75rem 1rem', textAlign: 'right' }}>
                   <Button size="sm" variant={a.status === 'published' ? 'ghost' : 'outline'} onClick={() => toggleTakeDown(a.id)}>

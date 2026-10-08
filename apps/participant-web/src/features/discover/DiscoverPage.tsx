@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { activitiesApi, type Activity } from '@gathergrid/shared';
-import { ActivityCard, Skeleton, EmptyState, Button } from '@gathergrid/ui';
+import { activitiesApi, type ActivityFormat, type Activity } from '@gathergrid/shared';
+import { ActivityCard, type OrganizerBadgeTier, Skeleton, EmptyState, Button } from '@gathergrid/ui';
 import { LayoutGrid, List } from 'lucide-react';
 import { DiscoverFilterBar } from './DiscoverFilterBar';
 
@@ -23,7 +23,7 @@ export const DiscoverPage: React.FC = () => {
       .list({
         query: query || undefined,
         category: selectedCategory || undefined,
-        format: (formatFilter as any) || undefined,
+        format: (formatFilter as ActivityFormat) || undefined,
         isFree: isFreeOnly ? true : undefined,
       })
       .then((res) => {
@@ -135,11 +135,11 @@ export const DiscoverPage: React.FC = () => {
               locationName={act.locationName}
               registeredCount={act.registeredCount}
               capacity={act.capacity}
-              joinMode={act.joinMode as any}
+              joinMode={act.joinMode === 'approval' ? 'approval' : 'instant'}
               isTeamEvent={act.isTeamEvent}
               costInfo={act.costInfo}
               organizerName={act.organizerName}
-              organizerBadgeTier={act.organizerBadge as any}
+              organizerBadgeTier={act.organizerBadge as OrganizerBadgeTier | undefined}
               onClick={() => navigate(`/activities/${act.id}`)}
             />
           ))}

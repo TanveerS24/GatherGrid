@@ -17,10 +17,20 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={[styles.wrapper, className].filter(Boolean).join(' ')}>
         <span className={styles.checkWrapper}>
-          <input ref={ref} type="checkbox" id={inputId} className={styles.input} {...rest} />
+          <input
+            ref={ref}
+            type="checkbox"
+            id={inputId}
+            className={styles.input}
+            aria-invalid={error ? 'true' : undefined}
+            {...rest}
+          />
           <span className={styles.box} aria-hidden="true"><Check size={12} strokeWidth={3} /></span>
         </span>
-        {label && <label htmlFor={inputId} className={styles.label}>{label}</label>}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {label && <label htmlFor={inputId} className={styles.label}>{label}</label>}
+          {error && <span style={{ fontSize: '12px', color: '#dc2626' }}>{error}</span>}
+        </div>
       </div>
     );
   },

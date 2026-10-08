@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { activitiesApi, type Activity } from '@gathergrid/shared';
-import { Card, Button, StatusPill, CategoryChip, EmptyState } from '@gathergrid/ui';
+import { Card, Button, StatusPill, CategoryChip, EmptyState, type StatusPillStatus } from '@gathergrid/ui';
 import { Plus, Calendar, MapPin, Users } from 'lucide-react';
 
 export const OrganizerActivitiesPage: React.FC = () => {
@@ -53,7 +53,7 @@ export const OrganizerActivitiesPage: React.FC = () => {
                 <div style={{ flex: '1', minWidth: '260px' }}>
                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
                     <CategoryChip slug={act.categorySlug} label={act.categoryLabel} emoji={act.categoryEmoji} />
-                    <StatusPill status={act.status as any} />
+                    <StatusPill status={act.status as StatusPillStatus} />
                     <span style={{ fontSize: '12px', background: '#e0f2fe', color: '#0369a1', padding: '2px 8px', borderRadius: '12px', fontWeight: 600 }}>
                       {act.joinMode === 'instant' ? 'Instant Join' : 'Approval Required'}
                     </span>

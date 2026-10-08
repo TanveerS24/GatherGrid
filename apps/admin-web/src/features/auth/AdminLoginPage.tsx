@@ -23,7 +23,8 @@ export const AdminLoginPage: React.FC = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const from = (location.state as any)?.from?.pathname || '/';
+  const locationState = location.state as { from?: { pathname?: string } } | null;
+  const from = locationState?.from?.pathname || '/';
 
   const onSubmit = async (data: LoginInput) => {
     setErrorMsg(null);
@@ -37,8 +38,8 @@ export const AdminLoginPage: React.FC = () => {
       await login(data);
       toast.success('Admin authentication verified');
       navigate(from, { replace: true });
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Authentication failed');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Authentication failed');
     }
   };
 

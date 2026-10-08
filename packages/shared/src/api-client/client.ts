@@ -34,9 +34,10 @@ export async function request<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const isBrowser = typeof globalThis !== 'undefined' && typeof (globalThis as any).window !== 'undefined';
+  const isBrowser = typeof globalThis !== 'undefined' && 'window' in globalThis;
   const defaultBase = !isBrowser ? 'http://localhost:4000' : '';
-  const baseUrl = (typeof globalThis !== 'undefined' && (globalThis as any).__API_BASE_URL__) || defaultBase;
+  const customGlobal = globalThis as typeof globalThis & { __API_BASE_URL__?: string };
+  const baseUrl = customGlobal.__API_BASE_URL__ || defaultBase;
   const url = endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`;
 
   const requestId =
@@ -58,11 +59,12 @@ export async function request<T>(
   let response: Response;
   try {
     response = await fetch(url, config);
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Network request failed';
     throw new ApiError({
       status: 0,
       code: 'NETWORK_ERROR',
-      message: err?.message || 'Network request failed',
+      message,
       requestId,
     });
   }
@@ -97,13 +99,13 @@ export async function request<T>(
 
   const contentType = response.headers.get('content-type');
   const isJson = contentType && contentType.includes('application/json');
-  const body: any = isJson ? await response.json() : null;
+  const body = (isJson ? await response.json() : null) as Record<string, unknown> | null;
 
   if (!response.ok) {
     throw new ApiError({
       status: response.status,
-      code: body?.code || (response.status === 401 ? 'UNAUTHORIZED' : response.status === 403 ? 'FORBIDDEN' : 'API_ERROR'),
-      message: body?.message || response.statusText || 'Request failed',
+      code: (body?.code as string) || (response.status === 401 ? 'UNAUTHORIZED' : response.status === 403 ? 'FORBIDDEN' : 'API_ERROR'),
+      message: (body?.message as string) || response.statusText || 'Request failed',
       requestId: response.headers.get('x-request-id') || requestId,
       details: body?.details,
     });

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { activitiesApi, type Activity } from '@gathergrid/shared';
+import { activitiesApi, ActivityFormat, type Activity } from '@gathergrid/shared';
 import { Card, Button, CategoryChip, Slider, Input } from '@gathergrid/ui';
 import { Compass, Search } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export const MapPage: React.FC = () => {
   const [radiusKm, setRadiusKm] = useState(25);
 
   useEffect(() => {
-    activitiesApi.list({ format: 'in_person' as any }).then((res) => {
+    activitiesApi.list({ format: ActivityFormat.IN_PERSON }).then((res) => {
       setActivities(res.data || []);
     });
   }, []);

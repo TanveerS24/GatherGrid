@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { activitiesApi } from '@gathergrid/shared';
+import { activitiesApi, ActivityFormat, JoinMode } from '@gathergrid/shared';
 import { Card, FormField, Input, Textarea, Select, Switch, Button, useToast } from '@gathergrid/ui';
 
 const CATEGORIES = [
@@ -17,13 +17,13 @@ export const CreateActivityPage: React.FC = () => {
   const toast = useToast();
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('sports');
-  const [format, setFormat] = useState<'in_person' | 'online'>('in_person');
+  const [format, setFormat] = useState<ActivityFormat>(ActivityFormat.IN_PERSON);
   const [locationName, setLocationName] = useState('Mission District, San Francisco');
   const [onlinePlatform, setOnlinePlatform] = useState('Zoom');
   const [startDateTime, setStartDateTime] = useState('2026-10-25T18:00');
   const [endDateTime, setEndDateTime] = useState('2026-10-25T21:00');
   const [capacity, setCapacity] = useState('25');
-  const [joinMode, setJoinMode] = useState<'instant' | 'approval'>('instant');
+  const [joinMode, setJoinMode] = useState<JoinMode>(JoinMode.INSTANT);
   const [costInfo, setCostInfo] = useState('Free');
   const [shortDesc, setShortDesc] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,15 +43,15 @@ export const CreateActivityPage: React.FC = () => {
         categorySlug: category,
         categoryLabel: selectedCat?.label.split(' ')[1] || 'General',
         categoryEmoji: selectedCat?.label.split(' ')[0] || '🌟',
-        format: format as any,
-        locationName: format === 'in_person' ? locationName : `Online (${onlinePlatform})`,
-        onlinePlatform: format === 'online' ? onlinePlatform : undefined,
-        lat: format === 'in_person' ? 37.76 : undefined,
-        lng: format === 'in_person' ? -122.42 : undefined,
+        format,
+        locationName: format === ActivityFormat.IN_PERSON ? locationName : `Online (${onlinePlatform})`,
+        onlinePlatform: format === ActivityFormat.ONLINE ? onlinePlatform : undefined,
+        lat: format === ActivityFormat.IN_PERSON ? 37.76 : undefined,
+        lng: format === ActivityFormat.IN_PERSON ? -122.42 : undefined,
         startDateTime: new Date(startDateTime).toISOString(),
         endDateTime: new Date(endDateTime).toISOString(),
         capacity: Number(capacity) || 20,
-        joinMode: joinMode as any,
+        joinMode,
         costInfo,
         shortDescription: shortDesc || 'Join us for this exciting activity!',
         bannerUrl: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&auto=format&fit=crop&q=80',
@@ -85,7 +85,7 @@ export const CreateActivityPage: React.FC = () => {
             <FormField label="Format">
               <Select
                 value={format}
-                onChange={(e) => setFormat(e.target.value as any)}
+                onChange={(e) => setFormat(e.target.value as ActivityFormat)}
                 options={[
                   { value: 'in_person', label: '📍 In-Person' },
                   { value: 'online', label: '🌐 Online / Remote' },
@@ -127,7 +127,7 @@ export const CreateActivityPage: React.FC = () => {
           </FormField>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Switch label="Require Organizer Approval to Join" checked={joinMode === 'approval'} onChange={(e) => setJoinMode(e.target.checked ? 'approval' : 'instant')} />
+            <Switch label="Require Organizer Approval to Join" checked={joinMode === JoinMode.APPROVAL} onChange={(e) => setJoinMode(e.target.checked ? JoinMode.APPROVAL : JoinMode.INSTANT)} />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1rem' }}>

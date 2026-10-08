@@ -6,8 +6,10 @@ import {
   Button,
   CategoryChip,
   StatusPill,
+  type StatusPillStatus,
   SeatMeter,
   OrganizerBadge,
+  type OrganizerBadgeTier,
   useToast,
 } from '@gathergrid/ui';
 import { Calendar, MapPin, ArrowLeft, Share2, Users } from 'lucide-react';
@@ -93,7 +95,7 @@ export const ActivityDetailPage: React.FC = () => {
       <Card variant="flat" padding="lg">
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
           <CategoryChip slug={activity.categorySlug} label={activity.categoryLabel} emoji={activity.categoryEmoji} />
-          <StatusPill status={activity.status as any} />
+          <StatusPill status={activity.status as StatusPillStatus} />
         </div>
 
         <h1 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>{activity.title}</h1>
@@ -124,7 +126,7 @@ export const ActivityDetailPage: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Users size={18} />
             <span>Hosted by <strong>{activity.organizerName}</strong></span>
-            {activity.organizerBadge && <OrganizerBadge tier={activity.organizerBadge as any} />}
+            {activity.organizerBadge && <OrganizerBadge tier={activity.organizerBadge as OrganizerBadgeTier} />}
           </div>
 
           <div style={{ display: 'flex', gap: '0.5rem' }}>

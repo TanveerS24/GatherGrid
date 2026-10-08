@@ -13,7 +13,6 @@ function loadEnv(): EnvConfig {
       .map((issue) => `  • ${issue.path.join('.')}: ${issue.message}`)
       .join('\n');
 
-    // eslint-disable-next-line no-console
     console.error(`\n❌ Invalid environment variables:\n${formatted}\n`);
     process.exit(1);
   }

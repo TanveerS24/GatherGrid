@@ -21,7 +21,8 @@ export const OrganizerLoginPage: React.FC = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const from = (location.state as any)?.from?.pathname || '/';
+  const locationState = location.state as { from?: { pathname?: string } } | null;
+  const from = locationState?.from?.pathname || '/';
 
   const onSubmit = async (data: LoginInput) => {
     setErrorMsg(null);
@@ -29,8 +30,8 @@ export const OrganizerLoginPage: React.FC = () => {
       await login(data);
       toast.success('Welcome to Organizer Portal');
       navigate(from, { replace: true });
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Login failed.');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Login failed.');
     }
   };
 

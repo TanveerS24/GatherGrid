@@ -26,8 +26,8 @@ export const RegisterPage: React.FC = () => {
       await registerUser(data);
       toast.success('Account created! Welcome to GatherGrid.');
       navigate('/onboarding', { replace: true });
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Registration failed.');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Registration failed.');
     }
   };
 

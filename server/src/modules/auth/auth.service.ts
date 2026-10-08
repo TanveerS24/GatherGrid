@@ -1,9 +1,10 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import jwt, { type SignOptions } from 'jsonwebtoken';
 import type { RegisterInput, LoginInput, AuthUser } from '@gathergrid/shared';
 import { env } from '../../config/env.js';
 import { AppError } from '../../common/errors/index.js';
 import { authRepository, toAuthUser } from './auth.repository.js';
+import type { IUser } from './user.model.js';
 
 export interface TokenPayload {
   userId: string;
@@ -13,7 +14,7 @@ export interface TokenPayload {
 export class AuthService {
   generateToken(payload: TokenPayload): string {
     return jwt.sign(payload, env.JWT_ACCESS_SECRET, {
-      expiresIn: env.JWT_ACCESS_EXPIRES_IN as any,
+      expiresIn: env.JWT_ACCESS_EXPIRES_IN as SignOptions['expiresIn'],
     });
   }
 
@@ -75,7 +76,7 @@ export class AuthService {
   }
 
   async updateProfile(userId: string, data: Partial<AuthUser>): Promise<AuthUser> {
-    const updated = await authRepository.updateById(userId, data as any);
+    const updated = await authRepository.updateById(userId, data as unknown as Partial<IUser>);
     if (!updated) {
       throw AppError.notFound('User profile not found');
     }

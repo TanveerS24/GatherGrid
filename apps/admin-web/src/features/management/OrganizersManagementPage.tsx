@@ -24,9 +24,9 @@ export const OrganizersManagementPage: React.FC = () => {
     setOrgs((prev) =>
       prev.map((o) => {
         if (o.id === id) {
-          const nextTier = o.tier === 'bronze' ? 'silver' : o.tier === 'silver' ? 'gold' : 'bronze';
+          const nextTier: OrgRow['tier'] = o.tier === 'bronze' ? 'silver' : o.tier === 'silver' ? 'gold' : 'bronze';
           toast.success(`${o.name} updated to ${nextTier} tier.`);
-          return { ...o, tier: nextTier as any };
+          return { ...o, tier: nextTier };
         }
         return o;
       })

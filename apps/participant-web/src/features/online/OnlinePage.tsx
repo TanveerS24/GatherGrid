@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { activitiesApi, type Activity } from '@gathergrid/shared';
+import { activitiesApi, ActivityFormat, type Activity } from '@gathergrid/shared';
 import { Card, Button, CategoryChip, Badge, EmptyState } from '@gathergrid/ui';
 import { Globe, Video, Calendar, ArrowRight } from 'lucide-react';
 
@@ -11,7 +11,7 @@ export const OnlinePage: React.FC = () => {
 
   useEffect(() => {
     activitiesApi
-      .list({ format: 'online' as any })
+      .list({ format: ActivityFormat.ONLINE })
       .then((res) => {
         setActivities(res.data || []);
         setLoading(false);

@@ -26,7 +26,18 @@ export class GeoService {
       });
       if (!res.ok) return { ...SF_FALLBACK, lat, lng };
 
-      const data = (await res.json()) as any;
+      interface NominatimReverseResponse {
+        place_id?: number | string;
+        display_name?: string;
+        address?: {
+          city?: string;
+          town?: string;
+          village?: string;
+          suburb?: string;
+          neighbourhood?: string;
+        };
+      }
+      const data = (await res.json()) as NominatimReverseResponse;
       const city =
         data.address?.city ||
         data.address?.town ||
@@ -57,7 +68,16 @@ export class GeoService {
       });
       if (!res.ok) return SF_SUGGESTIONS;
 
-      const items = (await res.json()) as any[];
+      interface NominatimSearchItem {
+        place_id: number | string;
+        display_name: string;
+        lat: string;
+        lon: string;
+        address?: {
+          city?: string;
+        };
+      }
+      const items = (await res.json()) as NominatimSearchItem[];
       if (!items || items.length === 0) return SF_SUGGESTIONS;
 
       return items.map((item) => ({

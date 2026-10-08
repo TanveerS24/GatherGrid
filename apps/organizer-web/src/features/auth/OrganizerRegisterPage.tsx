@@ -26,8 +26,8 @@ export const OrganizerRegisterPage: React.FC = () => {
       await registerUser(data);
       toast.success('Organizer account created! You can now publish events.');
       navigate('/', { replace: true });
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Signup failed.');
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : 'Signup failed.');
     }
   };
 
