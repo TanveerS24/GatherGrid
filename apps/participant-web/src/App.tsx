@@ -14,6 +14,8 @@ import { ActivityDetailPage } from './features/discover/ActivityDetailPage';
 import { MapPage } from './features/map/MapPage';
 import { OnlinePage } from './features/online/OnlinePage';
 import { MyActivitiesPage } from './features/activities/MyActivitiesPage';
+import { FormTeamsPage } from './features/teams/FormTeamsPage';
+import { OrganizerDetailPage } from './features/organizer/OrganizerDetailPage';
 import { GalleryPage } from './pages/gallery/GalleryPage';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -147,6 +149,30 @@ export const App: React.FC = () => {
               element={
                 <RequireAuth>
                   <ActivityDetailPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/activities/:id/teams"
+              element={
+                <RequireAuth>
+                  <FormTeamsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/activities/:id/form-teams"
+              element={
+                <RequireAuth>
+                  <FormTeamsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/organizers/:id"
+              element={
+                <RequireAuth>
+                  <OrganizerDetailPage />
                 </RequireAuth>
               }
             />

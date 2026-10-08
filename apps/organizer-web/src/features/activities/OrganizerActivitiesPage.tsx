@@ -73,9 +73,9 @@ export const OrganizerActivitiesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <Button size="sm" variant="outline" onClick={() => navigate(`/activities/${act.id}`)}>
-                    View Event
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <Button size="sm" variant="primary" leftIcon={<Users size={14} />} onClick={() => navigate(`/activities/${act.id}/participants`)}>
+                    View Participants ({act.registeredCount})
                   </Button>
                 </div>
               </div>

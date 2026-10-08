@@ -5,20 +5,29 @@ import { AppError } from '../../common/errors/index.js';
 export async function handleGetMyRegistrations(req: Request, res: Response): Promise<void> {
   if (!req.user) throw AppError.unauthorized();
   const status = req.query.status ? String(req.query.status) : undefined;
-  const list = registrationsService.getMyRegistrations(req.user.userId, status);
+  const list = await registrationsService.getMyRegistrations(req.user.userId, status);
   res.status(200).json({ status: 'ok', data: list });
 }
 
 export async function handleRegisterActivity(req: Request, res: Response): Promise<void> {
   if (!req.user) throw AppError.unauthorized();
   const activityId = String(req.params.id || '');
-  const reg = registrationsService.create(activityId, req.user.userId);
+  const { teamId, teamName } = req.body || {};
+  const reg = await registrationsService.create(
+    activityId,
+    req.user.userId,
+    req.body?.userName || 'Participant',
+    req.body?.userEmail,
+    req.body?.userAvatarUrl,
+    teamId,
+    teamName
+  );
   res.status(201).json({ status: 'ok', data: reg });
 }
 
 export async function handleCancelRegistration(req: Request, res: Response): Promise<void> {
   if (!req.user) throw AppError.unauthorized();
   const registrationId = String(req.params.id || '');
-  registrationsService.cancel(registrationId);
+  await registrationsService.cancel(registrationId, req.user.userId);
   res.status(200).json({ status: 'ok', data: { success: true } });
 }

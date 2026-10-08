@@ -125,11 +125,37 @@ export const ActivityDetailPage: React.FC = () => {
         <div style={{ borderTop: '1px solid var(--gg-color-border-light)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Users size={18} />
-            <span>Hosted by <strong>{activity.organizerName}</strong></span>
+            <span>
+              Hosted by{' '}
+              <button
+                type="button"
+                onClick={() => navigate(`/organizers/${activity.organizerId}`)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--gg-color-primary)',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                  padding: 0,
+                }}
+              >
+                {activity.organizerName}
+              </button>
+            </span>
             {activity.organizerBadge && <OrganizerBadge tier={activity.organizerBadge as OrganizerBadgeTier} />}
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {activity.isTeamEvent && (
+              <Button
+                variant="outline"
+                leftIcon={<Users size={16} />}
+                onClick={() => navigate(`/activities/${activity.id}/teams`)}
+              >
+                Form / Join Teams
+              </Button>
+            )}
             <Button variant="outline" leftIcon={<Share2 size={16} />} onClick={handleShare}>
               Share
             </Button>
