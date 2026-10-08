@@ -10,6 +10,8 @@ import { requestIdMiddleware, errorHandler, notFoundHandler } from './common/mid
 import { healthRoutes } from './modules/health/health.routes.js';
 import { authRoutes } from './modules/auth/auth.routes.js';
 import { geoRoutes } from './modules/geo/geo.routes.js';
+import { activitiesRoutes } from './modules/activities/activities.routes.js';
+import { registrationsRoutes } from './modules/registrations/registrations.routes.js';
 
 /**
  * Create and configure the Express application.
@@ -57,6 +59,8 @@ export function createApp(): express.Application {
   app.use(healthRoutes);
   app.use('/api/v1/auth', authRoutes);
   app.use('/api/v1/geo', geoRoutes);
+  app.use('/api/v1/activities', activitiesRoutes);
+  app.use('/api/v1/registrations', registrationsRoutes);
 
   // ── 404 + Error Handler ───────────────────────────────
   app.use(notFoundHandler);

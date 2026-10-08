@@ -9,6 +9,11 @@ import { RegisterPage } from './features/auth/RegisterPage';
 import { ForgotPasswordPage } from './features/auth/ForgotPasswordPage';
 import { OnboardingPage } from './features/onboarding/OnboardingPage';
 import { ProfilePage } from './features/profile/ProfilePage';
+import { DiscoverPage } from './features/discover/DiscoverPage';
+import { ActivityDetailPage } from './features/discover/ActivityDetailPage';
+import { MapPage } from './features/map/MapPage';
+import { OnlinePage } from './features/online/OnlinePage';
+import { MyActivitiesPage } from './features/activities/MyActivitiesPage';
 import { GalleryPage } from './pages/gallery/GalleryPage';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -53,7 +58,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/" style={{ color: 'var(--gg-color-ink)', fontWeight: 500 }}>Explore</Link>
               <Link to="/map" style={{ color: 'var(--gg-color-ink)', fontWeight: 500 }}>Map</Link>
               <Link to="/online" style={{ color: 'var(--gg-color-ink)', fontWeight: 500 }}>Online</Link>
-              <Link to="/me" style={{ color: 'var(--gg-color-ink)', fontWeight: 500 }}>My Activities</Link>
+              <Link to="/activities" style={{ color: 'var(--gg-color-ink)', fontWeight: 500 }}>My Activities</Link>
             </>
           )}
         </TopNav>
@@ -93,15 +98,47 @@ export const App: React.FC = () => {
               path="/"
               element={
                 <RequireAuth>
-                  <div style={{ textAlign: 'center', padding: '3rem 0' }}>
-                    <h1>GatherGrid Explore</h1>
-                    <p style={{ margin: '1rem 0 2rem', color: 'var(--gg-color-muted)' }}>
-                      Find and join exciting activities happening near you.
-                    </p>
-                    <Link to="/gallery">
-                      <Button variant="primary">Component Gallery</Button>
-                    </Link>
-                  </div>
+                  <DiscoverPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/map"
+              element={
+                <RequireAuth>
+                  <MapPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/online"
+              element={
+                <RequireAuth>
+                  <OnlinePage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/activities"
+              element={
+                <RequireAuth>
+                  <MyActivitiesPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/me/activities"
+              element={
+                <RequireAuth>
+                  <MyActivitiesPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/activities/:id"
+              element={
+                <RequireAuth>
+                  <ActivityDetailPage />
                 </RequireAuth>
               }
             />
@@ -137,17 +174,20 @@ export const App: React.FC = () => {
                 </RequireAuth>
               }
             />
+
             {/* Friendly 404 */}
             <Route
               path="*"
               element={
-                <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-                  <h2>Page Not Found</h2>
-                  <p style={{ margin: '1rem 0', color: 'var(--gg-color-muted)' }}>
-                    The page you are looking for does not exist.
-                  </p>
-                  <Link to="/"><Button variant="primary">Return Home</Button></Link>
-                </div>
+                <RequireAuth>
+                  <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+                    <h2>Page Not Found</h2>
+                    <p style={{ margin: '1rem 0', color: 'var(--gg-color-muted)' }}>
+                      The page you are looking for does not exist.
+                    </p>
+                    <Link to="/"><Button variant="primary">Return Home</Button></Link>
+                  </div>
+                </RequireAuth>
               }
             />
           </Routes>
