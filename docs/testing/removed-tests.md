@@ -8,6 +8,7 @@ The following legacy test files, test helpers, configs, and CI workflows were re
 - `packages/ui/src/components/RatingStars/RatingStars.test.tsx`
 - `packages/ui/src/components/SeatMeter/SeatMeter.test.tsx`
 - `packages/ui/src/components/StatusPill/StatusPill.test.tsx`
+- `packages/ui/src/test/setup.ts`
 - `packages/ui/vitest.config.ts`
 - `server/tests/auth.test.ts`
 - `server/tests/health.test.ts`
