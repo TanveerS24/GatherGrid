@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { asyncHandler } from '../../common/asyncHandler.js';
 import {
   handleRegister,
   handleLogin,
@@ -13,13 +14,13 @@ import { authenticate } from './auth.middleware.js';
 
 const router = Router();
 
-router.post('/register', handleRegister);
-router.post('/login', handleLogin);
-router.post('/logout', handleLogout);
-router.get('/me', authenticate, handleGetMe);
-router.post('/refresh', handleRefresh);
-router.post('/forgot-password', handleForgotPassword);
-router.post('/reset-password', handleResetPassword);
-router.patch('/profile', authenticate, handleUpdateProfile);
+router.post('/register', asyncHandler(handleRegister));
+router.post('/login', asyncHandler(handleLogin));
+router.post('/logout', asyncHandler(handleLogout));
+router.get('/me', authenticate, asyncHandler(handleGetMe));
+router.post('/refresh', asyncHandler(handleRefresh));
+router.post('/forgot-password', asyncHandler(handleForgotPassword));
+router.post('/reset-password', asyncHandler(handleResetPassword));
+router.patch('/profile', authenticate, asyncHandler(handleUpdateProfile));
 
 export { router as authRoutes };
