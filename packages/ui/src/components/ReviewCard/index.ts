@@ -1,2 +1,2 @@
-export { ReviewCard } from './ReviewCard';
-export type { ReviewCardProps } from './ReviewCard';
+export * from './ReviewCard';
+

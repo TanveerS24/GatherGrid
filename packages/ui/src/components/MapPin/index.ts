@@ -1,2 +1,2 @@
-export { MapPin } from './MapPin';
-export type { MapPinProps } from './MapPin';
+export * from './MapPin';
+

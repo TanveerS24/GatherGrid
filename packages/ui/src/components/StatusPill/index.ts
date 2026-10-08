@@ -1,2 +1,2 @@
-export { StatusPill } from './StatusPill';
-export type { StatusPillProps } from './StatusPill';
+export * from './StatusPill';
+

@@ -1,2 +1,2 @@
-export { SidebarNav } from './SidebarNav';
-export type { SidebarNavProps } from './SidebarNav';
+export * from './SidebarNav';
+
