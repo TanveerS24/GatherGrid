@@ -10,7 +10,7 @@ export function notFoundHandler(req: Request, res: Response): void {
     status: 'error',
     message: `Route not found: ${req.method} ${req.originalUrl}`,
     code: 'NOT_FOUND',
-    requestId: req.id,
+    requestId: String(req.id),
   };
   res.status(404).json(response);
 }

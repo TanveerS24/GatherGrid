@@ -21,7 +21,7 @@ export function errorHandler(
       status: 'error',
       message: 'Validation error',
       code: 'VALIDATION_ERROR',
-      requestId: req.id,
+      requestId: String(req.id),
       details: err.issues.map((issue) => ({
         path: issue.path.join('.'),
         message: issue.message,
@@ -41,7 +41,7 @@ export function errorHandler(
       status: 'error',
       message: err.message,
       code: err.code,
-      requestId: req.id,
+      requestId: String(req.id),
       details: err.details,
     };
     res.status(err.statusCode).json(response);
@@ -55,7 +55,7 @@ export function errorHandler(
     status: 'error',
     message: 'Internal server error',
     code: 'INTERNAL_ERROR',
-    requestId: req.id,
+    requestId: String(req.id),
   };
   res.status(500).json(response);
 }

@@ -1,4 +1,4 @@
-import type { UserRole, ActivityStatus, RegistrationStatus, OrganizerBadge } from '../enums';
+import type { UserRole } from '../enums';
 
 /** GeoJSON Point for MongoDB 2dsphere */
 export interface GeoPoint {
