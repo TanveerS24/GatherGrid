@@ -13,3 +13,4 @@ In accordance with Ground Rule 4:
 | `SRC-002` | Oct 2026 | `server/src/modules/registrations/registration.model.ts` | Bug Fix (`BUG-007`) | Added compound unique index `{ activityId: 1, userId: 1 }` to prevent duplicate concurrent registrations for the same user. |
 | `SRC-003` | Oct 2026 | `server/src/modules/activities/activity.model.ts` | Bug Fix (`BUG-010`) | Added `2dsphere` geospatial index to support location query operations. |
 | `SRC-004` | Oct 2026 | `server/src/modules/registrations/registrations.service.ts` | Bug Fix (`BUG-009`) / Race Prevention | Updated registration creation logic with atomic capacity check to ensure exact capacity limits under concurrent joins. |
+| `SRC-005` | Oct 2026 | `packages/ui/src/components/Modal/Modal.tsx`, `packages/ui/src/components/Drawer/Drawer.tsx` | Accessibility & Testability | Added accessible aria-label to Modal and Escape keydown event listener to Drawer. |
