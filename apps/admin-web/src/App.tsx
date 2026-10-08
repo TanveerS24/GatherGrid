@@ -5,6 +5,12 @@ import { Shield, Users, Building, Calendar, AlertOctagon, Tags, FileText, LogOut
 import { useAuthStore } from '@gathergrid/shared';
 import { RequireAdminAuth } from './features/auth/RequireAdminAuth';
 import { AdminLoginPage } from './features/auth/AdminLoginPage';
+import { UsersManagementPage } from './features/management/UsersManagementPage';
+import { OrganizersManagementPage } from './features/management/OrganizersManagementPage';
+import { ActivitiesModerationPage } from './features/management/ActivitiesModerationPage';
+import { ReportsQueuePage } from './features/management/ReportsQueuePage';
+import { CategoriesManagementPage } from './features/management/CategoriesManagementPage';
+import { AuditLogPage } from './features/management/AuditLogPage';
 
 const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, logout } = useAuthStore();
@@ -58,12 +64,82 @@ export const App: React.FC = () => {
               path="/"
               element={
                 <RequireAdminAuth>
-                  <div style={{ padding: '2rem 1rem' }}>
+                  <div style={{ padding: '2rem 1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
                     <h2>Platform Overview</h2>
                     <p style={{ color: 'var(--gg-color-muted)', margin: '0.5rem 0 1.5rem' }}>
                       GatherGrid city platform moderation and governance dashboard.
                     </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+                      <Link to="/users" style={{ textDecoration: 'none' }}>
+                        <Button variant="outline" fullWidth>Manage Users</Button>
+                      </Link>
+                      <Link to="/organizers" style={{ textDecoration: 'none' }}>
+                        <Button variant="outline" fullWidth>Review Organizers</Button>
+                      </Link>
+                      <Link to="/activities" style={{ textDecoration: 'none' }}>
+                        <Button variant="outline" fullWidth>Moderate Activities</Button>
+                      </Link>
+                      <Link to="/reports" style={{ textDecoration: 'none' }}>
+                        <Button variant="outline" fullWidth>Reports Queue</Button>
+                      </Link>
+                    </div>
                   </div>
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <RequireAdminAuth>
+                  <UsersManagementPage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/organizers"
+              element={
+                <RequireAdminAuth>
+                  <OrganizersManagementPage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/activities"
+              element={
+                <RequireAdminAuth>
+                  <ActivitiesModerationPage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/activites"
+              element={
+                <RequireAdminAuth>
+                  <ActivitiesModerationPage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/reports"
+              element={
+                <RequireAdminAuth>
+                  <ReportsQueuePage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/categories"
+              element={
+                <RequireAdminAuth>
+                  <CategoriesManagementPage />
+                </RequireAdminAuth>
+              }
+            />
+            <Route
+              path="/audit-log"
+              element={
+                <RequireAdminAuth>
+                  <AuditLogPage />
                 </RequireAdminAuth>
               }
             />

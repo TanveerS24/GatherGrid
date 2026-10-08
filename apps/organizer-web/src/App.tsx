@@ -7,6 +7,8 @@ import { RequireOrganizerAuth } from './features/auth/RequireOrganizerAuth';
 import { OrganizerLoginPage } from './features/auth/OrganizerLoginPage';
 import { OrganizerRegisterPage } from './features/auth/OrganizerRegisterPage';
 import { OrganizerProfilePage } from './features/profile/OrganizerProfilePage';
+import { OrganizerActivitiesPage } from './features/activities/OrganizerActivitiesPage';
+import { CreateActivityPage } from './features/activities/CreateActivityPage';
 
 const OrganizerLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, logout } = useAuthStore();
@@ -63,10 +65,39 @@ export const App: React.FC = () => {
                     <p style={{ color: 'var(--gg-color-muted)', margin: '0.5rem 0 1.5rem' }}>
                       Welcome back! Manage your events, review applicants, and track attendance.
                     </p>
-                    <Link to="/profile">
-                      <Button variant="outline">View Host Profile</Button>
-                    </Link>
+                    <div style={{ display: 'flex', gap: '1rem' }}>
+                      <Link to="/activities/new">
+                        <Button variant="primary">Create New Activity</Button>
+                      </Link>
+                      <Link to="/activities">
+                        <Button variant="outline">View My Activities</Button>
+                      </Link>
+                    </div>
                   </div>
+                </RequireOrganizerAuth>
+              }
+            />
+            <Route
+              path="/activities"
+              element={
+                <RequireOrganizerAuth>
+                  <OrganizerActivitiesPage />
+                </RequireOrganizerAuth>
+              }
+            />
+            <Route
+              path="/activites"
+              element={
+                <RequireOrganizerAuth>
+                  <OrganizerActivitiesPage />
+                </RequireOrganizerAuth>
+              }
+            />
+            <Route
+              path="/activities/new"
+              element={
+                <RequireOrganizerAuth>
+                  <CreateActivityPage />
                 </RequireOrganizerAuth>
               }
             />

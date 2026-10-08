@@ -127,6 +127,14 @@ export const App: React.FC = () => {
               }
             />
             <Route
+              path="/activites"
+              element={
+                <RequireAuth>
+                  <MyActivitiesPage />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/me/activities"
               element={
                 <RequireAuth>
