@@ -17,3 +17,14 @@
 ## ADR 004: Environmental Strictness & Boot Fail-Fast
 - **Context:** Missing environment variables cause runtime failures that are hard to diagnose.
 - **Decision:** Centralized Zod schema validation (`envSchema`) during app bootstrap. If any variable is missing or malformed, the process immediately logs an itemized error and exits with code 1.
+
+## ADR 005: Component-Scoped CSS Modules for Design System
+- **Context:** Design system components need strict visual encapsulation, zero naming clashes, and conformance to flat light theme tokens without heavyweight utility runtime overhead.
+- **Decision:** Use CSS Modules (`*.module.css`) per component referencing CSS variables defined in `@gathergrid/ui/src/styles/global.css`.
+- **Consequences:** Every component has independent styles; changing `--gg-*` tokens centrally updates styling across all three apps simultaneously.
+
+## ADR 006: Lightweight Map and Data Visualization Wrappers
+- **Context:** Maps and analytics are needed across all three portals, but full leaflet integration and complex charting should not bloat base rendering components.
+- **Decision:** `MapView` provides a styled canvas container ready for Leaflet layers (fully connected in Phase 5). `LineChart` and `BarChart` wrap Recharts with fixed styling matching design tokens.
+- **Consequences:** Unified interface for cards, stats, and maps throughout the application suite.
+

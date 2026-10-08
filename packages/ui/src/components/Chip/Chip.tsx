@@ -17,7 +17,7 @@ export const Chip: React.FC<ChipProps> = ({ label, onRemove, variant = 'default'
   <span className={[styles.chip, styles[variant], className].filter(Boolean).join(' ')}>
     {label}
     {onRemove && (
-      <button type="button" className={styles.remove} onClick={onRemove} aria-label={Remove }>
+      <button type="button" className={styles.remove} onClick={onRemove} aria-label={`Remove ${label}`}>
         <X size={12} strokeWidth={2.5} />
       </button>
     )}

@@ -2,7 +2,7 @@
  * ActivityCard — full rich card with banner, category chip, distance, seats meter, organizer badge, and join mode tag.
  */
 import React from 'react';
-import { Calendar, MapPin, Users } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { Card } from '../Card/Card';
 import { CategoryChip } from '../CategoryChip/CategoryChip';
 import { OrganizerBadge, type OrganizerBadgeTier } from '../OrganizerBadge/OrganizerBadge';
@@ -79,7 +79,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
             <MapPin size={14} />
             <span>
               {locationName}
-              {distanceKm !== undefined &&  ( km)}
+              {distanceKm !== undefined && ` (${distanceKm.toFixed(1)} km)`}
             </span>
           </span>
         </div>
