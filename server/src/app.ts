@@ -3,10 +3,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import pinoHttp from 'pino-http';
 import mongoSanitize from 'express-mongo-sanitize';
+import cookieParser from 'cookie-parser';
 import { env } from './config/env.js';
 import { logger } from './common/logger.js';
 import { requestIdMiddleware, errorHandler, notFoundHandler } from './common/middleware/index.js';
 import { healthRoutes } from './modules/health/health.routes.js';
+import { authRoutes } from './modules/auth/auth.routes.js';
 
 /**
  * Create and configure the Express application.
@@ -28,6 +30,7 @@ export function createApp(): express.Application {
   // ── Parsing ───────────────────────────────────────────
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+  app.use(cookieParser());
 
   // ── Request ID ────────────────────────────────────────
   app.use(requestIdMiddleware);
@@ -51,6 +54,7 @@ export function createApp(): express.Application {
 
   // ── Routes ────────────────────────────────────────────
   app.use(healthRoutes);
+  app.use('/api/v1/auth', authRoutes);
 
   // ── 404 + Error Handler ───────────────────────────────
   app.use(notFoundHandler);
