@@ -1,5 +1,6 @@
 import { createApp } from './app.js';
 import { env, connectDatabase, disconnectDatabase } from './config/index.js';
+import { seedDatabase } from './config/seed.js';
 import { logger } from './common/logger.js';
 
 /**
@@ -8,6 +9,7 @@ import { logger } from './common/logger.js';
 async function bootstrap(): Promise<void> {
   try {
     await connectDatabase();
+    await seedDatabase();
 
     const app = createApp();
     const server = app.listen(env.PORT, () => {

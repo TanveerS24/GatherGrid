@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import pinoHttp from 'pino-http';
 import mongoSanitize from 'express-mongo-sanitize';
 import cookieParser from 'cookie-parser';
 import { env } from './config/env.js';
@@ -12,6 +11,7 @@ import { authRoutes } from './modules/auth/auth.routes.js';
 import { geoRoutes } from './modules/geo/geo.routes.js';
 import { activitiesRoutes } from './modules/activities/activities.routes.js';
 import { registrationsRoutes } from './modules/registrations/registrations.routes.js';
+import { organizersRoutes } from './modules/organizers/organizers.routes.js';
 
 /**
  * Create and configure the Express application.
@@ -38,22 +38,15 @@ export function createApp(): express.Application {
   // ── Request ID ────────────────────────────────────────
   app.use(requestIdMiddleware);
 
-  // ── HTTP Logging ──────────────────────────────────────
-  app.use(
-    pinoHttp({
-      logger,
-      autoLogging: {
-        ignore: (req) => {
-          // Don't log health check requests to reduce noise
-          const url = (req as express.Request).originalUrl;
-          return url === '/health' || url === '/ready';
-        },
-      },
-      customProps: (req) => ({
-        requestId: (req as express.Request).id,
-      }),
-    }),
-  );
+  // ── HTTP Endpoint Logging ─────────────────────────────
+  app.use((req, _res, next) => {
+    // Skip health checks to keep logs clean
+    if (req.originalUrl === '/health' || req.originalUrl === '/ready') {
+      return next();
+    }
+    logger.info(`${req.method} ${req.originalUrl}`);
+    next();
+  });
 
   // ── Routes ────────────────────────────────────────────
   app.use(healthRoutes);
@@ -61,6 +54,7 @@ export function createApp(): express.Application {
   app.use('/api/v1/geo', geoRoutes);
   app.use('/api/v1/activities', activitiesRoutes);
   app.use('/api/v1/registrations', registrationsRoutes);
+  app.use('/api/v1/organizers', organizersRoutes);
 
   // ── 404 + Error Handler ───────────────────────────────
   app.use(notFoundHandler);

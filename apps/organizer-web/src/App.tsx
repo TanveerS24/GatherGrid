@@ -9,6 +9,7 @@ import { OrganizerRegisterPage } from './features/auth/OrganizerRegisterPage';
 import { OrganizerProfilePage } from './features/profile/OrganizerProfilePage';
 import { OrganizerActivitiesPage } from './features/activities/OrganizerActivitiesPage';
 import { CreateActivityPage } from './features/activities/CreateActivityPage';
+import { ActivityParticipantsPage } from './features/activities/ActivityParticipantsPage';
 
 const OrganizerLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, logout } = useAuthStore();
@@ -98,6 +99,14 @@ export const App: React.FC = () => {
               element={
                 <RequireOrganizerAuth>
                   <CreateActivityPage />
+                </RequireOrganizerAuth>
+              }
+            />
+            <Route
+              path="/activities/:id/participants"
+              element={
+                <RequireOrganizerAuth>
+                  <ActivityParticipantsPage />
                 </RequireOrganizerAuth>
               }
             />

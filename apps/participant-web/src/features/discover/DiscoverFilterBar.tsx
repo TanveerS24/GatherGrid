@@ -93,11 +93,11 @@ export const DiscoverFilterBar: React.FC<Props> = ({
           ))}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: '220px' }}>
-          <span style={{ fontSize: '13px', color: 'var(--gg-color-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Compass size={14} /> Radius: <strong>{radiusKm} km</strong>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: '300px', flex: '1 1 300px', maxWidth: '450px' }}>
+          <span style={{ fontSize: '13px', color: 'var(--gg-color-muted)', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+            <Compass size={14} /> Radius:
           </span>
-          <div style={{ width: '110px' }}>
+          <div style={{ flex: 1, minWidth: '200px' }}>
             <Slider value={radiusKm} onChange={(e) => onRadiusChange(Number(e.target.value))} min={1} max={100} />
           </div>
         </div>

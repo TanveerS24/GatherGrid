@@ -109,11 +109,11 @@ export const MapPage: React.FC = () => {
             leftAddon={<Search size={16} />}
           />
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '12px' }}>
-          <span style={{ color: 'var(--gg-color-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Compass size={14} /> Radius: <strong>{radiusKm} km</strong>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', fontSize: '13px' }}>
+          <span style={{ color: 'var(--gg-color-muted)', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
+            <Compass size={14} /> Radius:
           </span>
-          <div style={{ width: '140px' }}>
+          <div style={{ flex: 1, minWidth: '220px' }}>
             <Slider value={radiusKm} onChange={(e) => setRadiusKm(Number(e.target.value))} min={1} max={100} />
           </div>
         </div>
