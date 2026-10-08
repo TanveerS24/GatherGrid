@@ -72,4 +72,6 @@ const activitySchema = new Schema<IActivity>(
   }
 );
 
+activitySchema.index({ lat: 1, lng: 1 });
+
 export const ActivityModel = mongoose.model<IActivity>('Activity', activitySchema);

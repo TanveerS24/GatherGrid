@@ -49,6 +49,41 @@ export const registrationsService = {
       return toRegistrationDTO(existing);
     }
 
+    const activity = await ActivityModel.findOne({ id: activityId });
+    if (!activity) {
+      throw new Error('Activity not found');
+    }
+
+    // Atomic capacity increment if capacity is available or unlimited
+    const updated = await ActivityModel.findOneAndUpdate(
+      {
+        id: activityId,
+        $or: [
+          { capacity: { $lte: 0 } },
+          { $expr: { $lt: ['$registeredCount', '$capacity'] } },
+        ],
+      },
+      { $inc: { registeredCount: 1 } },
+      { new: true }
+    );
+
+    const isFull = !updated;
+    let initialStatus = RegistrationStatus.CONFIRMED;
+    let waitlistPosition: number | undefined;
+
+    if (isFull) {
+      if (!activity.waitlistEnabled) {
+        throw new Error('Activity is full and waitlist is disabled');
+      }
+      initialStatus = RegistrationStatus.WAITLISTED;
+      const count = await RegistrationModel.countDocuments({
+        activityId,
+        status: RegistrationStatus.WAITLISTED,
+      });
+      waitlistPosition = count + 1;
+      await ActivityModel.updateOne({ id: activityId }, { $inc: { waitlistCount: 1 } });
+    }
+
     const regId = 'reg-' + Math.random().toString(36).slice(2, 9);
     const doc = await RegistrationModel.create({
       id: regId,
@@ -57,23 +92,31 @@ export const registrationsService = {
       userName: userName || 'Participant',
       userEmail,
       userAvatarUrl,
-      status: RegistrationStatus.CONFIRMED,
+      status: initialStatus,
+      waitlistPosition,
       appliedAt: new Date().toISOString(),
-      confirmedAt: new Date().toISOString(),
+      confirmedAt:
+        initialStatus === RegistrationStatus.CONFIRMED
+          ? new Date().toISOString()
+          : undefined,
       teamId,
       teamName,
     });
 
-    await ActivityModel.updateOne({ id: activityId }, { $inc: { registeredCount: 1 } });
     return toRegistrationDTO(doc);
   },
 
   cancel: async (regId: string, userId: string): Promise<boolean> => {
     const doc = await RegistrationModel.findOne({ id: regId, userId });
     if (!doc) return false;
+    const oldStatus = doc.status;
     doc.status = RegistrationStatus.CANCELLED;
     await doc.save();
-    await ActivityModel.updateOne({ id: doc.activityId }, { $inc: { registeredCount: -1 } });
+    if (oldStatus === RegistrationStatus.CONFIRMED) {
+      await ActivityModel.updateOne({ id: doc.activityId }, { $inc: { registeredCount: -1 } });
+    } else if (oldStatus === RegistrationStatus.WAITLISTED) {
+      await ActivityModel.updateOne({ id: doc.activityId }, { $inc: { waitlistCount: -1 } });
+    }
     return true;
   },
 

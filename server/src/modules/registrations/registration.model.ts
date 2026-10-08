@@ -41,4 +41,6 @@ const registrationSchema = new Schema<IRegistration>(
   }
 );
 
+registrationSchema.index({ activityId: 1, userId: 1 }, { unique: true });
+
 export const RegistrationModel = mongoose.model<IRegistration>('Registration', registrationSchema);
