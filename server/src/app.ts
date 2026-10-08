@@ -9,6 +9,7 @@ import { logger } from './common/logger.js';
 import { requestIdMiddleware, errorHandler, notFoundHandler } from './common/middleware/index.js';
 import { healthRoutes } from './modules/health/health.routes.js';
 import { authRoutes } from './modules/auth/auth.routes.js';
+import { geoRoutes } from './modules/geo/geo.routes.js';
 
 /**
  * Create and configure the Express application.
@@ -55,6 +56,7 @@ export function createApp(): express.Application {
   // ── Routes ────────────────────────────────────────────
   app.use(healthRoutes);
   app.use('/api/v1/auth', authRoutes);
+  app.use('/api/v1/geo', geoRoutes);
 
   // ── 404 + Error Handler ───────────────────────────────
   app.use(notFoundHandler);

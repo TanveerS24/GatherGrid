@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuthStore, authApi } from '@gathergrid/shared';
+import { useAuthStore, authApi, geoApi } from '@gathergrid/shared';
 import {
   Card,
   Avatar,
@@ -19,16 +19,59 @@ export const ProfilePage: React.FC = () => {
   const toast = useToast();
   const [name, setName] = useState(user?.name || '');
   const [bio, setBio] = useState(user?.bio || '');
+  const [locationName, setLocationName] = useState(user?.homeLocation?.name || 'San Francisco, CA');
+  const [coords, setCoords] = useState({
+    lat: user?.homeLocation?.lat || 37.7749,
+    lng: user?.homeLocation?.lng || -122.4194,
+  });
   const [radius, setRadius] = useState(user?.defaultRadiusKm || 25);
   const [emailAlerts, setEmailAlerts] = useState(true);
   const [inAppAlerts, setInAppAlerts] = useState(true);
+  const [isLocating, setIsLocating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+
+  const handleUseLocation = () => {
+    if (!navigator?.geolocation) {
+      toast.info('Geolocation not supported by browser.');
+      return;
+    }
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        setCoords({ lat, lng });
+        try {
+          const res = await geoApi.reverse(lat, lng);
+          const locName = res.displayName || `${res.city || 'Local Area'} (${lat.toFixed(2)}, ${lng.toFixed(2)})`;
+          setLocationName(locName);
+          toast.success(`Location updated to ${locName}`);
+        } catch {
+          setLocationName(`Current Location (${lat.toFixed(3)}, ${lng.toFixed(3)})`);
+          toast.success('Coordinates updated');
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      () => {
+        setIsLocating(false);
+        toast.info('GPS unavailable. You can type your neighborhood or city.');
+      },
+      { timeout: 7000, enableHighAccuracy: false, maximumAge: 60000 }
+    );
+  };
 
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await authApi.updateProfile({ name, bio, defaultRadiusKm: radius });
-      updateUser({ name, bio, defaultRadiusKm: radius });
+      const payload = {
+        name,
+        bio,
+        homeLocation: { name: locationName, lat: coords.lat, lng: coords.lng },
+        defaultRadiusKm: radius,
+      };
+      await authApi.updateProfile(payload);
+      updateUser(payload);
       toast.success('Profile updated successfully');
     } catch {
       toast.error('Failed to update profile');
@@ -73,6 +116,15 @@ export const ProfilePage: React.FC = () => {
 
           <FormField label="Bio">
             <Textarea value={bio} onChange={(e) => setBio(e.target.value)} rows={3} placeholder="Tell others a bit about yourself..." />
+          </FormField>
+
+          <FormField label="Home Location">
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <Input value={locationName} onChange={(e) => setLocationName(e.target.value)} placeholder="City or neighborhood" />
+              <Button type="button" variant="outline" onClick={handleUseLocation} isLoading={isLocating}>
+                Use GPS
+              </Button>
+            </div>
           </FormField>
 
           <FormField label={`Default Search Radius: ${radius} km`}>
