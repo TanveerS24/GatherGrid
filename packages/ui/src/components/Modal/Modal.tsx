@@ -44,7 +44,13 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay} onClick={onClose} role="dialog" aria-modal="true">
+    <div
+      className={styles.overlay}
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={typeof title === 'string' ? title : 'Dialog'}
+    >
       <div
         ref={modalRef}
         className={[styles.dialog, styles[size], className].filter(Boolean).join(' ')}

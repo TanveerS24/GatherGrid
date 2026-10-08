@@ -25,6 +25,7 @@
     "@gathergrid/config": "*",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "eslint": "^9.10.0",
@@ -32,7 +33,8 @@
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "typescript": "^5.6.0",
-    "vitest": "^2.1.9"
+    "vitest": "^2.1.9",
+    "vitest-axe": "^0.1.0"
   },
   "dependencies": {
     "date-fns": "^4.4.0",
