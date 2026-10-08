@@ -1,0 +1,31 @@
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gg-space-3);
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-md);
+  background: var(--gg-color-surface);
+  color: var(--gg-color-ink);
+  cursor: pointer;
+  transition: background var(--gg-transition-fast), border-color var(--gg-transition-fast);
+}
+.button:hover:not(:disabled) {
+  border-color: var(--gg-color-primary);
+  color: var(--gg-color-primary);
+}
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.info {
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,15 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-5);
+}
+.message {
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+  line-height: var(--gg-leading-relaxed);
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gg-space-3);
+}

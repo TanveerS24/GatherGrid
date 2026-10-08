@@ -1,0 +1,27 @@
+.pin {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--gg-transition-fast), filter var(--gg-transition-fast);
+  color: var(--gg-color-primary);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+.pin:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+.selected {
+  transform: translateY(-5px) scale(1.25);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+.sports { color: var(--gg-cat-sports); }
+.hackathons { color: var(--gg-cat-hackathons); }
+.workshops { color: var(--gg-cat-workshops); }
+.gaming { color: var(--gg-cat-gaming); }
+.cultural { color: var(--gg-cat-cultural); }
+.trips { color: var(--gg-cat-trips); }
+.social { color: var(--gg-cat-social); }
+.career { color: var(--gg-cat-career); }
+.default { color: var(--gg-color-primary); }

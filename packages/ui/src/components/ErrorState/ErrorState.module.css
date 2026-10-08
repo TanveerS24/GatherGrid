@@ -1,0 +1,26 @@
+.errorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--gg-space-8) var(--gg-space-4);
+  max-width: 440px;
+  margin: 0 auto;
+}
+.icon {
+  color: var(--gg-color-danger);
+  margin-bottom: var(--gg-space-3);
+}
+.title {
+  margin: 0 0 var(--gg-space-2);
+  font-size: var(--gg-text-lg);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+}
+.message {
+  margin: 0 0 var(--gg-space-5);
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+  line-height: var(--gg-leading-relaxed);
+}

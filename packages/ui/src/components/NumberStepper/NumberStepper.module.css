@@ -1,0 +1,40 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-md);
+  background: var(--gg-color-surface);
+  overflow: hidden;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  color: var(--gg-color-ink);
+  cursor: pointer;
+  transition: background-color var(--gg-transition-fast);
+}
+.button:hover:not(:disabled) {
+  background: var(--gg-color-border-light);
+}
+.button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.value {
+  min-width: 44px;
+  text-align: center;
+  font-size: var(--gg-text-sm);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+}
+.sentinel {
+  display: flex;
+  justify-content: center;
+  padding: var(--gg-space-4) 0;
+}
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gg-color-border);
+  border-top-color: var(--gg-color-primary);
+  border-radius: 50%;
+  animation: spin 600ms linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

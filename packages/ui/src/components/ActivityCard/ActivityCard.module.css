@@ -1,0 +1,96 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+.bannerWrapper {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: var(--gg-color-border-light);
+  overflow: hidden;
+}
+.banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bannerFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfaf6;
+}
+.fallbackEmoji {
+  font-size: 3rem;
+}
+.categoryBadge {
+  position: absolute;
+  top: var(--gg-space-3);
+  left: var(--gg-space-3);
+}
+.instantTag {
+  position: absolute;
+  top: var(--gg-space-3);
+  right: var(--gg-space-3);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2px 8px;
+  border-radius: var(--gg-radius-full);
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+  box-shadow: var(--gg-shadow-xs);
+}
+.body {
+  padding: var(--gg-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-2);
+  flex: 1;
+}
+.title {
+  margin: 0;
+  font-size: var(--gg-text-base);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+  line-height: var(--gg-leading-tight);
+}
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--gg-text-xs);
+  color: var(--gg-color-muted);
+}
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.meterSection {
+  margin: var(--gg-space-1) 0;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--gg-color-border-light);
+  padding-top: var(--gg-space-3);
+  margin-top: auto;
+}
+.organizer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.orgName {
+  font-size: var(--gg-text-xs);
+  font-weight: 500;
+  color: var(--gg-color-ink);
+}
+.costInfo {
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+  color: var(--gg-color-muted);
+}

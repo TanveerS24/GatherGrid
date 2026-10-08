@@ -1,0 +1,37 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+  font-weight: 500;
+}
+.icon {
+  color: var(--gg-color-primary);
+  display: flex;
+  align-items: center;
+}
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gg-space-2);
+}
+.value {
+  font-size: var(--gg-text-2xl);
+  font-weight: 700;
+  font-family: var(--gg-font-display);
+  color: var(--gg-color-ink);
+}
+.change {
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+}
+.positive { color: var(--gg-color-success); }
+.negative { color: var(--gg-color-danger); }

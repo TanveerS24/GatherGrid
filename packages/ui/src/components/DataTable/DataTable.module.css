@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-lg);
+  background: var(--gg-color-surface);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--gg-text-sm);
+}
+th {
+  background: var(--gg-color-background);
+  color: var(--gg-color-muted);
+  font-weight: 600;
+  padding: var(--gg-space-3) var(--gg-space-4);
+  border-bottom: 1px solid var(--gg-color-border);
+  font-size: var(--gg-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+td {
+  padding: var(--gg-space-3) var(--gg-space-4);
+  border-bottom: 1px solid var(--gg-color-border-light);
+  color: var(--gg-color-ink);
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tr:hover td {
+  background: #faf8f5;
+}
+.selectedRow td {
+  background: #fff5f2;
+}
+.checkboxCol {
+  width: 40px;
+  text-align: center;
+}
+.centerCell {
+  text-align: center;
+  color: var(--gg-color-muted);
+  padding: var(--gg-space-8) 0;
+}

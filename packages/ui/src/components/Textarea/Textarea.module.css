@@ -1,0 +1,18 @@
+.textarea {
+  width: 100%;
+  border: 1.5px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-md);
+  background-color: var(--gg-color-surface);
+  color: var(--gg-color-ink);
+  font-family: var(--gg-font-body);
+  font-size: var(--gg-text-sm);
+  padding: 0.625rem var(--gg-space-3);
+  line-height: var(--gg-leading-relaxed);
+  transition: border-color var(--gg-transition-fast), box-shadow var(--gg-transition-fast);
+  min-height: 100px;
+}
+.textarea::placeholder { color: var(--gg-color-muted); }
+.textarea:hover:not(:disabled) { border-color: var(--gg-color-muted); }
+.textarea:focus { outline: none; border-color: var(--gg-color-primary); box-shadow: 0 0 0 3px rgba(255,107,74,0.12); }
+.textarea:disabled { background: var(--gg-color-border-light); color: var(--gg-color-muted); cursor: not-allowed; }
+.hasError { border-color: var(--gg-color-danger); }

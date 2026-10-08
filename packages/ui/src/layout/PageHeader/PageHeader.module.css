@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gg-space-6);
+  gap: var(--gg-space-4);
+  flex-wrap: wrap;
+}
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-3);
+}
+.backBtn {
+  margin-top: 2px;
+}
+.title {
+  margin: 0;
+  font-size: var(--gg-text-2xl);
+  font-weight: 700;
+  font-family: var(--gg-font-display);
+}
+.subtitle {
+  margin: 2px 0 0;
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-3);
+}

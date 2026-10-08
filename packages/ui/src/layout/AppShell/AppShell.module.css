@@ -1,0 +1,22 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--gg-color-background);
+}
+.bodyWrapper {
+  display: flex;
+  flex: 1;
+}
+.main {
+  flex: 1;
+  padding: var(--gg-space-6) var(--gg-space-4);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .main {
+    padding-bottom: 80px; /* room for bottom tabs */
+  }
+}

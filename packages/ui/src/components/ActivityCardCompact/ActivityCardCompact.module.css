@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.seats {
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+  color: var(--gg-color-primary);
+}
+.title {
+  margin: 0;
+  font-size: var(--gg-text-sm);
+  font-weight: 600;
+}
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--gg-text-xs);
+  color: var(--gg-color-muted);
+}
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

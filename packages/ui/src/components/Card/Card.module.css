@@ -1,0 +1,26 @@
+.card {
+  background: var(--gg-color-surface);
+  border: 1px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-card);
+  transition: transform var(--gg-transition-fast), box-shadow var(--gg-transition-fast), border-color var(--gg-transition-fast);
+  overflow: hidden;
+}
+.flat {
+  box-shadow: var(--gg-shadow-xs);
+}
+.elevated {
+  box-shadow: var(--gg-shadow-md);
+}
+.interactive {
+  box-shadow: var(--gg-shadow-xs);
+  cursor: pointer;
+}
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--gg-shadow-md);
+  border-color: var(--gg-color-primary);
+}
+.pad-none { padding: 0; }
+.pad-sm { padding: var(--gg-space-3); }
+.pad-md { padding: var(--gg-space-5); }
+.pad-lg { padding: var(--gg-space-8); }

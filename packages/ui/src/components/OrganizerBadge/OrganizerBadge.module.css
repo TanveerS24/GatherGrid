@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--gg-radius-full);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sm {
+  font-size: 0.6875rem;
+  padding: 2px 8px;
+}
+.md {
+  font-size: var(--gg-text-xs);
+  padding: 3px 10px;
+}
+.icon {
+  display: flex;
+  align-items: center;
+}
+.newTier {
+  background: var(--gg-color-border-light);
+  color: var(--gg-color-muted);
+}
+.bronzeTier {
+  background: #fbf0ea;
+  color: #a75d2a;
+}
+.silverTier {
+  background: #eef2f6;
+  color: #4b5563;
+}
+.goldTier {
+  background: #fef9c3;
+  color: #854d0e;
+}

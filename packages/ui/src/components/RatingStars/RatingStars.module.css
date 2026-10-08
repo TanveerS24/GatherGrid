@@ -1,0 +1,44 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gg-space-2);
+}
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.starBtn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gg-color-border);
+  line-height: 1;
+}
+.clickable {
+  cursor: pointer;
+  transition: transform var(--gg-transition-fast);
+}
+.clickable:hover {
+  transform: scale(1.15);
+}
+.filled {
+  color: var(--gg-color-highlight);
+}
+.empty {
+  color: var(--gg-color-border);
+}
+.number {
+  font-size: var(--gg-text-sm);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+  font-variant-numeric: tabular-nums;
+}
+.count {
+  font-weight: 400;
+  color: var(--gg-color-muted);
+  margin-left: 2px;
+}

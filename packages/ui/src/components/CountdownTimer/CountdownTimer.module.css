@@ -1,0 +1,29 @@
+.timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  border-radius: var(--gg-radius-full);
+  padding: 4px 10px;
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.icon {
+  color: #b45309;
+}
+.timeString {
+  letter-spacing: 0.05em;
+}
+.expired {
+  display: inline-flex;
+  align-items: center;
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 4px 10px;
+  border-radius: var(--gg-radius-full);
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+}

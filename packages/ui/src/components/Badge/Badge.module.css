@@ -1,0 +1,13 @@
+.badge {
+  display: inline-flex; align-items: center; border-radius: var(--gg-radius-full);
+  font-weight: 500; white-space: nowrap; letter-spacing: 0.01em;
+}
+.sm { font-size: 0.6875rem; padding: 2px 8px; }
+.md { font-size: var(--gg-text-xs); padding: 3px 10px; }
+.default { background: var(--gg-color-border-light); color: var(--gg-color-ink); }
+.primary { background: #fff2ef; color: var(--gg-color-primary); }
+.success { background: #f0fdf4; color: #15803d; }
+.warning { background: #fffbeb; color: #b45309; }
+.danger { background: #fef2f2; color: #b91c1c; }
+.info { background: #f0f9ff; color: #0369a1; }
+.muted { background: var(--gg-color-border-light); color: var(--gg-color-muted); }

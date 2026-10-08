@@ -1,0 +1,193 @@
+/*
+ * GatherGrid Global Styles
+ * Import this once in your app's entry point (main.tsx).
+ * All design tokens are exposed as CSS custom properties on :root.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Colors ── */
+  --gg-color-background: #faf8f5;
+  --gg-color-surface: #ffffff;
+  --gg-color-border: #ece8e1;
+  --gg-color-border-light: #f3f0eb;
+  --gg-color-ink: #1f2430;
+  --gg-color-muted: #6b7280;
+  --gg-color-primary: #ff6b4a;
+  --gg-color-primary-hover: #f25636;
+  --gg-color-secondary: #14b8a6;
+  --gg-color-highlight: #ffc93c;
+  --gg-color-success: #22c55e;
+  --gg-color-warning: #f59e0b;
+  --gg-color-danger: #ef4444;
+  --gg-color-info: #38bdf8;
+
+  /* ── Category accents ── */
+  --gg-cat-sports: #16a34a;
+  --gg-cat-sports-bg: #f0fdf4;
+  --gg-cat-hackathons: #ff6b4a;
+  --gg-cat-hackathons-bg: #fff5f2;
+  --gg-cat-workshops: #0284c7;
+  --gg-cat-workshops-bg: #f0f9ff;
+  --gg-cat-gaming: #14b8a6;
+  --gg-cat-gaming-bg: #f0fdfa;
+  --gg-cat-study-groups: #ca8a04;
+  --gg-cat-study-groups-bg: #fefce8;
+  --gg-cat-cultural: #db2777;
+  --gg-cat-cultural-bg: #fdf2f8;
+  --gg-cat-trips: #ea580c;
+  --gg-cat-trips-bg: #fff7ed;
+  --gg-cat-social: #e11d48;
+  --gg-cat-social-bg: #fff1f2;
+  --gg-cat-career: #475569;
+  --gg-cat-career-bg: #f8fafc;
+  --gg-cat-online: #7c3aed;
+  --gg-cat-online-bg: #faf5ff;
+
+  /* ── Typography ── */
+  --gg-font-display: 'Outfit', 'Nunito', sans-serif;
+  --gg-font-body: 'Inter', sans-serif;
+  --gg-text-xs: 0.75rem;
+  --gg-text-sm: 0.875rem;
+  --gg-text-base: 1rem;
+  --gg-text-lg: 1.125rem;
+  --gg-text-xl: 1.25rem;
+  --gg-text-2xl: 1.5rem;
+  --gg-text-3xl: 1.875rem;
+  --gg-text-4xl: 2.25rem;
+  --gg-leading-tight: 1.25;
+  --gg-leading-normal: 1.5;
+  --gg-leading-relaxed: 1.625;
+
+  /* ── Spacing ── */
+  --gg-space-1: 0.25rem;
+  --gg-space-2: 0.5rem;
+  --gg-space-3: 0.75rem;
+  --gg-space-4: 1rem;
+  --gg-space-5: 1.25rem;
+  --gg-space-6: 1.5rem;
+  --gg-space-8: 2rem;
+  --gg-space-10: 2.5rem;
+  --gg-space-12: 3rem;
+  --gg-space-16: 4rem;
+
+  /* ── Radii ── */
+  --gg-radius-sm: 6px;
+  --gg-radius-md: 10px;
+  --gg-radius-lg: 14px;
+  --gg-radius-xl: 20px;
+  --gg-radius-card: 16px;
+  --gg-radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --gg-shadow-xs: 0 1px 2px rgba(31, 36, 48, 0.04);
+  --gg-shadow-sm: 0 1px 3px rgba(31, 36, 48, 0.06), 0 1px 2px rgba(31, 36, 48, 0.04);
+  --gg-shadow-md: 0 4px 6px rgba(31, 36, 48, 0.06), 0 2px 4px rgba(31, 36, 48, 0.04);
+  --gg-shadow-lg: 0 10px 15px rgba(31, 36, 48, 0.08), 0 4px 6px rgba(31, 36, 48, 0.04);
+  --gg-shadow-xl: 0 20px 25px rgba(31, 36, 48, 0.1), 0 8px 10px rgba(31, 36, 48, 0.04);
+
+  /* ── Transitions ── */
+  --gg-transition-fast: 150ms ease;
+  --gg-transition-normal: 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --gg-transition-fast: 0ms;
+    --gg-transition-normal: 0ms;
+  }
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--gg-font-body);
+  font-size: var(--gg-text-base);
+  line-height: var(--gg-leading-normal);
+  color: var(--gg-color-ink);
+  background-color: var(--gg-color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--gg-font-display);
+  line-height: var(--gg-leading-tight);
+  color: var(--gg-color-ink);
+}
+
+a {
+  color: var(--gg-color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid var(--gg-color-primary);
+  outline-offset: 2px;
+  border-radius: var(--gg-radius-sm);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gg-color-border);
+  border-radius: var(--gg-radius-full);
+}
+
+/* ── Utility classes ── */
+.gg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

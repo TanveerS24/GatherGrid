@@ -1,0 +1,12 @@
+.pill {
+  display: inline-flex; align-items: center; gap: 5px; border-radius: var(--gg-radius-full);
+  font-size: var(--gg-text-xs); font-weight: 500; padding: 3px 10px; white-space: nowrap;
+}
+.dot { flex-shrink: 0; }
+.success { background: #f0fdf4; color: #15803d; }
+.warning { background: #fffbeb; color: #b45309; }
+.danger { background: #fef2f2; color: #b91c1c; }
+.info { background: #f0f9ff; color: #0369a1; }
+.primary { background: #fff2ef; color: var(--gg-color-primary); }
+.muted { background: var(--gg-color-border-light); color: var(--gg-color-muted); }
+.default { background: var(--gg-color-border-light); color: var(--gg-color-ink); }

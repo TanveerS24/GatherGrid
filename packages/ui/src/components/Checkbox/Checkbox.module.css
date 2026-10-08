@@ -1,0 +1,16 @@
+.wrapper { display: flex; align-items: flex-start; gap: var(--gg-space-2); }
+.checkWrapper { position: relative; display: inline-flex; flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; }
+.input {
+  position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; z-index: 1;
+}
+.box {
+  width: 18px; height: 18px; border: 1.5px solid var(--gg-color-border);
+  border-radius: var(--gg-radius-sm); background: var(--gg-color-surface);
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color var(--gg-transition-fast), border-color var(--gg-transition-fast);
+  color: transparent;
+}
+.input:checked + .box { background: var(--gg-color-primary); border-color: var(--gg-color-primary); color: #fff; }
+.input:focus-visible + .box { outline: 2px solid var(--gg-color-primary); outline-offset: 2px; }
+.input:disabled + .box { background: var(--gg-color-border-light); border-color: var(--gg-color-border); cursor: not-allowed; }
+.label { font-size: var(--gg-text-sm); color: var(--gg-color-ink); cursor: pointer; line-height: 1.4; }

@@ -1,0 +1,15 @@
+.chip {
+  display: inline-flex; align-items: center; gap: var(--gg-space-1);
+  border-radius: var(--gg-radius-full); font-size: var(--gg-text-xs); font-weight: 500;
+  padding: 4px 10px; white-space: nowrap;
+}
+.default { background: var(--gg-color-border-light); color: var(--gg-color-ink); }
+.primary { background: #fff2ef; color: var(--gg-color-primary); }
+.remove {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; border: none; background: none; cursor: pointer;
+  border-radius: var(--gg-radius-full); color: inherit; padding: 0;
+  transition: background-color var(--gg-transition-fast);
+  opacity: 0.7;
+}
+.remove:hover { opacity: 1; background: rgba(0,0,0,0.1); }

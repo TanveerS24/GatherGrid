@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-3);
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-3);
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-2);
+}
+.name {
+  margin: 0;
+  font-size: var(--gg-text-base);
+  font-weight: 600;
+}
+.stats {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-3);
+  font-size: var(--gg-text-xs);
+  color: var(--gg-color-muted);
+}
+.bio {
+  margin: 0;
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-muted);
+  line-height: var(--gg-leading-relaxed);
+}

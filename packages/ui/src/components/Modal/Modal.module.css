@@ -1,0 +1,57 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 36, 48, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--gg-space-4);
+  animation: fadeIn 150ms ease;
+}
+.dialog {
+  background: var(--gg-color-surface);
+  border-radius: var(--gg-radius-card);
+  box-shadow: var(--gg-shadow-xl);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: popIn 150ms ease;
+}
+.sm { max-width: 400px; }
+.md { max-width: 540px; }
+.lg { max-width: 720px; }
+.xl { max-width: 960px; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gg-space-4) var(--gg-space-5);
+  border-bottom: 1px solid var(--gg-color-border);
+}
+.title {
+  margin: 0;
+  font-size: var(--gg-text-lg);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+}
+.closeBtn {
+  margin-left: auto;
+}
+.content {
+  padding: var(--gg-space-5);
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popIn {
+  from { transform: scale(0.97); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

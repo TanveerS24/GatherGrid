@@ -1,0 +1,31 @@
+.chip {
+  display: inline-flex; align-items: center; gap: var(--gg-space-1);
+  border-radius: var(--gg-radius-full); border: 1.5px solid transparent;
+  cursor: pointer; font-weight: 500; transition: all var(--gg-transition-fast);
+  white-space: nowrap; background: var(--gg-color-border-light); color: var(--gg-color-ink);
+}
+.sm { font-size: var(--gg-text-xs); padding: 3px 10px; }
+.md { font-size: var(--gg-text-sm); padding: 5px 14px; }
+.emoji { font-size: 1em; line-height: 1; }
+
+/* Category-specific colors */
+.sports { background: var(--gg-cat-sports-bg); color: var(--gg-cat-sports); }
+.sports.active, .sports:hover { background: var(--gg-cat-sports); color: #fff; }
+.hackathons { background: var(--gg-cat-hackathons-bg); color: var(--gg-cat-hackathons); }
+.hackathons.active, .hackathons:hover { background: var(--gg-cat-hackathons); color: #fff; }
+.workshops { background: var(--gg-cat-workshops-bg); color: var(--gg-cat-workshops); }
+.workshops.active, .workshops:hover { background: var(--gg-cat-workshops); color: #fff; }
+.gaming { background: var(--gg-cat-gaming-bg); color: var(--gg-cat-gaming); }
+.gaming.active, .gaming:hover { background: var(--gg-cat-gaming); color: #fff; }
+.study-groups { background: var(--gg-cat-study-groups-bg); color: var(--gg-cat-study-groups); }
+.study-groups.active, .study-groups:hover { background: var(--gg-cat-study-groups); color: #fff; }
+.cultural { background: var(--gg-cat-cultural-bg); color: var(--gg-cat-cultural); }
+.cultural.active, .cultural:hover { background: var(--gg-cat-cultural); color: #fff; }
+.trips { background: var(--gg-cat-trips-bg); color: var(--gg-cat-trips); }
+.trips.active, .trips:hover { background: var(--gg-cat-trips); color: #fff; }
+.social { background: var(--gg-cat-social-bg); color: var(--gg-cat-social); }
+.social.active, .social:hover { background: var(--gg-cat-social); color: #fff; }
+.career { background: var(--gg-cat-career-bg); color: var(--gg-cat-career); }
+.career.active, .career:hover { background: var(--gg-cat-career); color: #fff; }
+.online { background: var(--gg-cat-online-bg); color: var(--gg-cat-online); }
+.online.active, .online:hover { background: var(--gg-cat-online); color: #fff; }

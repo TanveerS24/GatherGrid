@@ -1,0 +1,32 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gg-color-border-light);
+  border-radius: var(--gg-radius-md);
+  padding: 3px;
+}
+.sm { height: 32px; }
+.md { height: 40px; }
+.option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--gg-color-muted);
+  font-family: var(--gg-font-body);
+  font-size: var(--gg-text-xs);
+  font-weight: 500;
+  padding: 0 var(--gg-space-3);
+  height: 100%;
+  border-radius: var(--gg-radius-sm);
+  cursor: pointer;
+  transition: all var(--gg-transition-fast);
+  white-space: nowrap;
+}
+.selected {
+  background: var(--gg-color-surface);
+  color: var(--gg-color-ink);
+  font-weight: 600;
+  box-shadow: var(--gg-shadow-xs);
+}

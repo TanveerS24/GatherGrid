@@ -1,0 +1,64 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.stepWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.stepWrapper:last-child {
+  flex: initial;
+}
+.stepButton {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-2);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+}
+.stepButton:disabled {
+  cursor: default;
+}
+.badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--gg-text-xs);
+  font-weight: 600;
+  background: var(--gg-color-border-light);
+  color: var(--gg-color-muted);
+}
+.current .badge {
+  background: var(--gg-color-primary);
+  color: #fff;
+}
+.done .badge {
+  background: var(--gg-color-success);
+  color: #fff;
+}
+.label {
+  font-size: var(--gg-text-xs);
+  font-weight: 500;
+  color: var(--gg-color-muted);
+}
+.current .label {
+  color: var(--gg-color-ink);
+  font-weight: 600;
+}
+.connector {
+  flex: 1;
+  height: 2px;
+  background: var(--gg-color-border);
+  margin: 0 var(--gg-space-3);
+}
+.connectorDone {
+  background: var(--gg-color-success);
+}

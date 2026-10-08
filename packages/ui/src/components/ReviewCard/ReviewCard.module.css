@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gg-space-2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--gg-space-2);
+}
+.userName {
+  font-size: var(--gg-text-sm);
+  font-weight: 600;
+  color: var(--gg-color-ink);
+}
+.date {
+  font-size: var(--gg-text-xs);
+  color: var(--gg-color-muted);
+}
+.activity {
+  font-size: var(--gg-text-xs);
+  font-weight: 500;
+  color: var(--gg-color-primary);
+}
+.comment {
+  margin: 0;
+  font-size: var(--gg-text-sm);
+  color: var(--gg-color-ink);
+  line-height: var(--gg-leading-relaxed);
+}
