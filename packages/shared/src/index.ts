@@ -12,3 +12,7 @@ export * from './schemas/index.js';
 
 // API Client
 export * from './api-client/index.js';
+
+// Auth Store
+export * from './auth/authStore.js';
+
