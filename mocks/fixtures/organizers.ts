@@ -1,0 +1,52 @@
+import { OrganizerBadge } from '@gathergrid/shared';
+import type { OrganizerProfile } from '@gathergrid/shared';
+
+export const mockOrganizers: OrganizerProfile[] = [
+  {
+    id: 'org-1',
+    organizationName: 'Bay Area Outdoor Club',
+    contactEmail: 'contact@bayareaoutdoor.org',
+    bio: 'Community adventures, hikes, beach sports, and cycling tours across Northern California.',
+    logoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
+    badgeTier: OrganizerBadge.GOLD,
+    averageRating: 4.8,
+    totalRatingsCount: 124,
+    completedEventsCount: 38,
+    cancelledEventsCount: 1,
+  },
+  {
+    id: 'org-2',
+    organizationName: 'SF Tech & Hackathons',
+    contactEmail: 'hello@sfhack.io',
+    bio: 'Weekend hackathons, tech workshops, and coding jams for developers of all skill levels.',
+    logoUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=120&auto=format&fit=crop&q=80',
+    badgeTier: OrganizerBadge.SILVER,
+    averageRating: 4.4,
+    totalRatingsCount: 45,
+    completedEventsCount: 14,
+    cancelledEventsCount: 0,
+  },
+  {
+    id: 'org-3',
+    organizationName: 'Mission Board Game Guild',
+    contactEmail: 'guild@missiongames.com',
+    bio: 'Friendly board games, strategy sessions, and social gaming nights.',
+    logoUrl: 'https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=120&auto=format&fit=crop&q=80',
+    badgeTier: OrganizerBadge.BRONZE,
+    averageRating: 4.2,
+    totalRatingsCount: 12,
+    completedEventsCount: 4,
+    cancelledEventsCount: 0,
+  },
+  {
+    id: 'org-4',
+    organizationName: 'Sunrise Yoga Collective',
+    contactEmail: 'namaste@sunriseyoga.com',
+    bio: 'Free outdoor morning yoga and mindfulness sessions in Golden Gate Park.',
+    badgeTier: OrganizerBadge.NEW,
+    averageRating: 5.0,
+    totalRatingsCount: 2,
+    completedEventsCount: 1,
+    cancelledEventsCount: 0,
+  },
+];

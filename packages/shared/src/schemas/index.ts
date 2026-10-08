@@ -1,2 +1,11 @@
-export { envSchema } from './env.schema.js';
-export type { EnvConfig } from './env.schema.js';
+export * from './env.schema';
+export * from './auth.schema';
+export * from './activities.schema';
+export * from './registrations.schema';
+export * from './teams.schema';
+export * from './notifications.schema';
+export * from './reviews.schema';
+export * from './reports.schema';
+export * from './organizers.schema';
+export * from './admin.schema';
+export * from './geo.schema';

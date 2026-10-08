@@ -28,3 +28,10 @@
 - **Decision:** `MapView` provides a styled canvas container ready for Leaflet layers (fully connected in Phase 5). `LineChart` and `BarChart` wrap Recharts with fixed styling matching design tokens.
 - **Consequences:** Unified interface for cards, stats, and maps throughout the application suite.
 
+## ADR 007: Mandatory Authentication Across All Apps for Browsing and Activities
+- **Context:** The platform requirement specifies that every type of user (participants, organizers, admins) must be mandatorily logged in to browse or interact with the platform.
+- **Decision:** Strict route guards (`RequireAuth`) are enforced across all three applications. Unauthenticated visitors cannot browse `/`, `/explore`, `/map`, `/online`, `/activity/:id`, or portal dashboards.
+- **Allowed Unauthenticated Routes:** Only authentication-specific pages (`/login`, `/register`, `/forgot-password`, `/reset-password`, and email verification steps) are publicly accessible.
+- **Consequences:** All other routes redirect to `/login` with the attempted location preserved in navigation state (`state: { from: location }`), returning the user to their desired view upon authentication.
+
+
